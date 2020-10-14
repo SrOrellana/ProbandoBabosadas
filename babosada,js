@@ -1,189 +1,74 @@
-const baseStarWarsApi = 'https://swapi0220.herokuapp.com/api/';
-let data = {
-    offset: Math.floor(Math.random() * 1050) + 1,
-    limit: 4,
-    favs: [],
-};
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>STAR WARS</title>
+    <link rel="stylesheet" href="./Sass/main.css">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/4b62f14fb4.js" crossorigin="anonymous"></script>
+</head>
 
-/**
- * Crea la estructura html de una carta para mostrar informacion de la nave
- * Toma en cuenta si la nave forma parte del team del usuario
- * @param {object} ship Contiene la informacion sobre la nave a mostrar 
- */
+<body>
+    <!--Navbar-->
+    <nav class="navbar">
+        <a class="navbar-brand">STAR WARS<i class="fab fa-galactic-senate"></i></a>
+        <div class="collapse-navbar">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a href="#Discover" class="nav-link">Discover People</a>
+                </li>
+                <li class="nav-link">
+                    <a href="#Team" class="nav-link">My Team</a>
+                </li>
+            </ul>
+            <form class="form-inline">
+                <input type="search" placeholder="Search" class="form-control">
+                <button class="btnSearch" type="submit">Search</button>
+            </form>
+        </div>
+    </nav>
+    <!--Spacechips-->
+    <section class="discover">
+        <div class="container">
+            <header class="header">
+                <h2 class="spaceships"><i class="fab fa-reddit-alien"></i>SPACESHIPS</h2>
+                <nav class="nav-spaceship">
+                    <ul class="pagination">
+                        <li class="page-item"><a class="page-link discover-previous" href="#"><i
+                                    class="fas fa-arrow-circle-left"></i></a></li>
+                        <li class="page-item"><a class="page-link discover-next" href="#"><i
+                                    class="fas fa-arrow-circle-right"></i></a></li>
+                    </ul>
+                </nav>
+            </header>
+            <hr>
+            <div class="spaceship-result">
 
-const createStarWarsCard = (ship) => {
-    let wrapper = document.createElement('div');
-    wrapper.classList.add('spaceship-result');
-    // Valores por defecto
-    const favColor = data.favs.findIndex(favShip => ship.name == favShip.name)>= 0 ? "text-danger": "";
-    const cardImg = ship.img || "./img/millennium-falcon.png";
-    const cardContent = ` 
-    <div class="column">
-                    <div class="card-deck">
-                        <img src="${cardImg}" alt="${ship.name}" class="card-img-top">
+            </div>
 
-                        <div class="card-body">
-                            <h4 class="card-title">${ship.name}</h4>
-                            <p class="card-text">${ship.model}</p>
-                        </div>
-                        <div class="card-footer">
-                            <button data-ship='${JSON.stringify(ship)}' 
-                             type="button" class="btn-fav fav-ship ${ship.name}" ><i class="far fa-heart ${favColor}" fav-ship ></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                <hr>
-    `;
-    wrapper.innerHTML = cardContent;
-    return wrapper;
+        </div>
+        </div>
+    </section>
+    <section class="team">
+        <div class="container-two">
+            <header class="favs">
+                <h2 class="favspaship"><i class="fas fa-heart"></i>My Team</h2>
+                <nav class="myteam">
+                    <ul class="pagination">
+                        <li class="page-item"><a class="page-link discover-previous" href="#"><i
+                                    class="fas fa-arrow-circle-left"></i></a></li>
+                        <li class="page-item"><a class="page-link discover-next" href="#"><i
+                                    class="fas fa-arrow-circle-right"></i></a></li>
+                    </ul>
+                </nav>
+            </header>
+            <div class="team-result"></div>
+        </div>
+        <hr>
+    </section>
+    <script src="/js/index.js"></script>
+</body>
 
-}
-
-
-/**
- * Muestra una lista de cartas en elemento especifico
- * Reemplazar el contenido actual por el de la lista
- * @param {array ship} list 
- * @param {DOMElementet} target 
- */
-
-const showListAsCard = (list, target) => {
-    list.forEach((ship) => {
-        target.appendChild(createStarWarsCard(ship));
-    });
-
-};
-
-
-
-/**
- * Obtiene la lista de las naves a mostrar
- * @param {string} endPoint
- * @param {function} action callback cuando la funcion termine de obtener los resultados
- */
-const getDiscoverShip = (endPoint, action) => {
-    fetch(endPoint)
-        .then(response => response.json())
-        .then((data) => {
-            action(data);
-        })
-        .catch(err => {
-            console.log('Error obteniendo la lista de naves')
-        })
-
-}
-
-
-/**
- * Dada la data de un pokemon la mapea a un objeto mas simple
- * @param {object} data Data de nave en formato API
- */
-const createShip = (data) => {
-    const ship = {
-        name: data.name,
-        img: data.cardImg,
-        model: data.model,
-
-    }
-    return ship;
-}
-
-
-
-/**
- * Muestra la lista de cartas en la seccion de naves
- * Otiene los elementos a mostrar desde data.discover
- */
-
-const showDiscover = async () => {
-    let ships = [];
-    for (const shipMetaData of data.discover.results) {
-        const response = await fetch(shipMetaData.url);
-        const data = await response.json();
-        let ship = createShip(data);
-        ships.push(createShip(ship));
-    };
-    const dest = document.querySelector(".discover");
-    showListAsCard(ships, dest);
-}
-/**
- * Almacena el resultado de busqueda de las naves
- * @param {object} discover  
- */
-const saveDiscoverData = (discover) => {
-    data.discover = discover;
-    showDiscover();
-}
-/**
- * Siguiente pagina de las naves
- */
-const nextDiscoverListener = () => {
-    document.querySelector(".discover-next")
-        .addEventListener("click", (e) => {
-            e.preventDefault();
-            getDiscoverShip(data.discover.next, saveDiscoverData)
-        });
-}
-
-const previousDiscoverListener = () => {
-    document.querySelector(".discover-previous")
-        .addEventListener("click", (e) => {
-            e.preventDefault();
-            getDiscoverShip(data.discover.previous, saveDiscoverData)
-        });
-}
-
-
-
-
-const listToogle = (target, list, after) => {
-    const shipToAddORemove = JSON.parse(target.dataset.ship);
-    const index = list.findIndex(ship => ship.name == shipToAddORemove.name);
-    if (index >= 0) {
-        list.splice(index, 1);
-    } else {
-        list.push(shipToAddORemove)
-    }
-    if (after) after(shipToAddORemove);
-};
-
-const favListener = () => {
-    document.addEventListener('click', (e) => {
-        const target = e.target;
-        if (target.classList.contains('fav-ship')) {
-            listToogle(target, data.favs, (ship) => {
-             
-            showListAsCard(data.favs, document.querySelector(".team-result"))
-            });
-        }
-
-
-    });
-}
-
-/**
- * 
- Agrega todos lo listeners necesarios
- */
-const addListeners = () => {
-    nextDiscoverListener();
-    previousDiscoverListener();
-    favListener();
-}
-
-
-/**
- *  * Configura todo lo necesario para que la app funcione
- */
-
-const App = () => {
-    console.log("Start App");
-    addListeners();
-    const endPoint = baseStarWarsApi + `starships?limit=${data.limit}=4&offset=${data.offset}`;
-    getDiscoverShip(endPoint, saveDiscoverData);
-    //showListAsCard(ships, document.querySelector(".discover"));
-
-};
-window.onload = App;
+</html>
