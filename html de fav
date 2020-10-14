@@ -1,0 +1,17 @@
+<section class="team">
+        <div class="container-two">
+            <header class="favs">
+                <h2 class="favspaship"><i class="fas fa-heart"></i>My Team</h2>
+                <nav class="myteam">
+                    <ul class="pagination">
+                        <li class="page-item"><a class="page-link discover-previous" href="#"><i
+                                    class="fas fa-arrow-circle-left"></i></a></li>
+                        <li class="page-item"><a class="page-link discover-next" href="#"><i
+                                    class="fas fa-arrow-circle-right"></i></a></li>
+                    </ul>
+                </nav>
+            </header>
+            <div class="team-result"></div>
+        </div>
+        <hr>
+    </section>
