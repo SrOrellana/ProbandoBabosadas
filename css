@@ -1,0 +1,300 @@
+//Colors
+$primary: darkblue;
+$secondary: #F2F0F1;
+$third: #ffe;
+$other: #343a40;
+
+*, ::after, ::before{
+    box-sizing: border-box;
+    
+}
+body{
+margin: 0;
+display: block;
+box-sizing: border-box;
+background-color: $secondary;
+font-family: 'Press Start 2P', cursive;
+overflow-x: hidden;
+}
+hr {
+    font-size: 10px;
+}
+
+.navbar {
+background-color: $other;
+position: relative;
+display: flex;
+align-items: center;
+padding: .5rem 1rem;
+flex-flow: row nowrap;
+justify-content: flex-start;
+min-width: 992px;
+box-sizing: border-box;
+}
+
+a.navbar-brand {
+color: #fff;
+list-style: none;
+text-decoration: none;
+display: inline-block;
+padding-top: .3125rem;
+padding-bottom: .3125rem;
+margin-right: 1rem;
+white-space: nowrap;
+line-height: inherit;
+}
+
+a.nav-link{
+text-decoration: none;
+color: ivory;
+}
+
+div.collapse-navbar {
+    align-items: center;
+    display: flex;
+    flex-basis: auto;
+    flex-grow: 1;
+}
+
+ul.navbar-nav {
+    margin-top: 0px;
+    display: flex;
+    padding-left: 0;
+    margin-right: auto;
+    margin-bottom: 0;
+    margin-block-start: 1em;
+    margin-block-end: .5em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 40px;
+    list-style: none;
+    flex-grow: 1;
+    flex-direction: row;
+    
+}
+li {
+    display: list-item; 
+    color: ivory;
+}
+li.nav-link{
+    padding-left: 40px;
+}
+
+form.form-inline {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+input.form-control {
+display: inline-block;
+width: auto;
+vertical-align: middle;
+height: calc(1.5em + .75rem + 2px);
+padding: .375rem .75rem;
+font-size: 1rem;
+font-weight: 400;
+line-height: 1.5;
+background-clip: padding-box;
+border: 1px solid #ced4da;
+border-radius: .25rem;
+transition: border-color .15s;
+}
+
+button.btnSearch {
+    cursor: pointer;
+    margin-bottom: 0;
+    margin-top: 0;
+    color: rgb(44, 172, 5);
+    border-color: rgb(30, 233, 3);
+    display: inline-block;
+    font-weight: 400;
+    text-align: center;
+    vertical-align: middle;
+    user-select: none;
+    background-color: transparent;
+    border: 1px solid transparent;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    border-radius: .25rem;
+    transition: color .15s ease-in-out, background-color .15s ease-in-out
+    border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+    text-transform: uppercase;
+}
+.btnSearch:hover {
+        text-shadow: 0 1px 1px rgba(0,0,0,0.5);
+        background: white;
+    }
+
+
+
+header.header {
+   align-items: center;
+   display: flex;
+  
+}
+
+h2.spaceships {
+    padding-top: .5rem;
+    margin-bottom: .5rem;
+    font-size: 2rem;
+    line-height: 1.2;
+    font-weight: 500;
+    margin-top: 0;
+    text-align: center;
+
+
+}
+
+nav.nav-spaceship {
+margin-left: 60%;
+display: block;
+
+}
+
+ul.pagination {
+    margin: 0;
+    display: flex;
+    padding-left: 5rem;
+    list-style: none;
+    border-radius: .25rem;
+    font-size: 2.5rem;
+}
+
+li.page-item:active {
+    color: white;
+    background-color: transparent;
+}
+
+section.discover { 
+    transition: opacity .15s linear;
+    display: block;
+    flex-wrap: wrap;
+    margin-top: 1rem;
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 30px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+div.spaceship-result {
+    display: inline-block;
+    flex-flow: row wrap;
+    margin-right: -15px;
+    margin-left: -15px;
+    margin-top: 20px;
+}
+
+div.column {
+margin-bottom: 1.5rem;
+flex: 0 0 33.3333333%;
+position: relative;
+width: 75%;
+padding-right: 15px;
+padding-left: 15px;
+display: flex;
+flex-direction: row;
+flex-wrap: wrap;
+}
+
+div.card-body {
+p {
+ font-size: 13px;
+}
+}
+
+div.card-deck {
+    flex: 1 0 0%;
+    margin-right: 15px;
+    margin-bottom: 0;
+    margin-left: 15px;
+    position: relative;
+    display: flex;
+    width: 50%;
+    border-radius: 8px;
+    flex-direction: column;
+    transition: all 0.25s;
+}
+div.card-deck:hover{
+    transform: translateY(-15px);
+    box-shadow: 0 12px 16px rgba(0,0,0,0.2);
+}
+
+img.card-img-top{
+width: 100%;
+}
+
+div.card-body {
+    flex: 1 1 auto;
+    min-height: 1px;
+    padding: 1.25rem;
+
+}
+
+div.card-footer {
+    border-radius: 0 0 calc(.25rem - 1px) calc(.25rem - 1px);
+    padding: .75rem 1.25rem;
+    border-top: 2px;
+    background-color: rgba(0,0,0,.15s);
+}
+
+button.btn-fav {
+    cursor: pointer;
+    font-size: 1.5rem;
+    background-color: darkgreen;
+    border-radius: 4px;
+    width: 100px;
+    color: white;
+    box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2),
+    0 2px 2px 0 rgba(0, 0, 0, 0.14),
+    0 1px 5px 0 rgba(0, 0, 0, 0.12);
+    transition: background-color 15ms linear,
+    box-shadow 280ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+button.btn-fav:hover, button.btn-fav:focus {
+    box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.2),
+    0 4px 5px 0 rgba(0, 0, 0, 0.14),
+    0 1px 10px 0 rgba(0, 0, 0, 0.12);
+  background-color: #159090;
+ }
+ div.discover-result{
+     flex-wrap: wrap;
+     display: flex;
+     width: 24%;
+    height: 400px;
+    }
+    section.team {
+        align-items: center;
+   
+    }
+    header.favs {
+        align-items: center;
+        display: flex;
+     }
+     h2.favspaship {
+        padding-top: 1.5rem;
+        margin-bottom: .5rem;
+        font-size: 2rem;
+        line-height: 1.2;
+        font-weight: 500;
+        margin-top: 0;
+        text-align: center;
+    margin-left: 1.5rem;   
+    }     
+    nav.myteam {
+        margin-left: 66%;
+        display: block;
+    }
+    ul.pagination {
+        margin: 0;
+        display: flex;
+        padding-left: 5rem;
+        list-style: none;
+        border-radius: .25rem;
+        font-size: 2.5rem;
+    }
+div.team-result {
+    padding: 1.5rem;
+}
